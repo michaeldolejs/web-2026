@@ -8,7 +8,7 @@ Princip: obsah = soubory v GitHub repu `michaeldolejs/web-2026`. Každá změna 
 GitHub Desktop → repo `web-2026` → **Push origin**. (Commit „Add Astro site and Pages CMS config“ je připravený.)
 
 ### 2. Cloudflare Worker napojený na GitHub (hotovo)
-Web běží jako Cloudflare **Worker** `michaeldolejs` (osobní účet michael.dolejs@me.com) → https://michaeldolejs.michael-dolejs.workers.dev
+Web běží jako Cloudflare **Worker** `web-2026` (osobní účet michael.dolejs@me.com) → https://web-2026.michael-dolejs.workers.dev
 
 - Nastavení: repo `michaeldolejs/web-2026`, Path `astro`, build `npm run build`, deploy `npx wrangler deploy`.
 - Konfigurace Workeru je v `astro/wrangler.jsonc` (statický web ze složky `dist`).
@@ -31,7 +31,7 @@ Web běží jako Cloudflare **Worker** `michaeldolejs` (osobní účet michael.d
 | CV, fotky na About | **About — CV**, **About — gallery** |
 | e-mail, menu, sociální sítě | **Site** |
 
-**Save** = commit na GitHub = za ~1 min na webu (průběh v Cloudflare → Worker michaeldolejs → Deployments).
+**Save** = commit na GitHub = za ~1 min na webu (průběh v Cloudflare → Worker web-2026 → Deployments).
 
 ### Tipy
 - Obrázky na web zmenšit předem (max ~2400 px, JPG/WebP do ~500 kB). Videa ideálně do ~20 MB (limit Cloudflare je 25 MB na soubor).

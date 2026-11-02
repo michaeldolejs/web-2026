@@ -2,7 +2,7 @@
 // Cloudflare builds on every push to main (Workers Builds): `npm run build`, then `npx wrangler deploy`.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "michaeldolejs",
+  "name": "web-2026",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./dist",
