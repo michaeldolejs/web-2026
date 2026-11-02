@@ -7,19 +7,12 @@ Princip: obsah = soubory v GitHub repu `michaeldolejs/web-2026`. Každá změna 
 ### 1. Push na GitHub
 GitHub Desktop → repo `web-2026` → **Push origin**. (Commit „Add Astro site and Pages CMS config“ je připravený.)
 
-### 2. Cloudflare Pages napojené na GitHub
-Starý projekt `website-2026` byl nahraný ručně a na GitHub přepnout nejde → zakládáme nový.
+### 2. Cloudflare Worker napojený na GitHub (hotovo)
+Web běží jako Cloudflare **Worker** `michaeldolejs` (osobní účet michael.dolejs@me.com) → https://michaeldolejs.michael-dolejs.workers.dev
 
-1. dash.cloudflare.com (osobní účet michael.dolejs@me.com) → **Workers & Pages** → **Create** → záložka **Pages** → **Import an existing Git repository**.
-2. Připojit GitHub, vybrat `michaeldolejs/web-2026`.
-3. Nastavení buildu:
-   - Production branch: `main`
-   - Framework preset: **Astro**
-   - Build command: `npm run build`
-   - Build output directory: `dist`
-   - **Root directory (advanced): `astro`**
-4. **Save and Deploy**. Po buildu dostaneš adresu `*.pages.dev` → zkontrolovat.
-5. Až bude vše OK: starý projekt `website-2026` smazat; při spuštění na michaeldolejs.com přidat doménu v **Custom domains** a smazat `astro/public/_headers` (noindex).
+- Nastavení: repo `michaeldolejs/web-2026`, Path `astro`, build `npm run build`, deploy `npx wrangler deploy`.
+- Konfigurace Workeru je v `astro/wrangler.jsonc` (statický web ze složky `dist`).
+- Při spuštění na michaeldolejs.com: Worker → **Domains** → přidat doménu a smazat `astro/public/_headers` (noindex).
 
 ### 3. Pages CMS
 1. Otevři **app.pagescms.org** → **Sign in with GitHub**.
@@ -38,7 +31,7 @@ Starý projekt `website-2026` byl nahraný ručně a na GitHub přepnout nejde �
 | CV, fotky na About | **About — CV**, **About — gallery** |
 | e-mail, menu, sociální sítě | **Site** |
 
-**Save** = commit na GitHub = za ~1 min na webu (průběh v Cloudflare → Deployments).
+**Save** = commit na GitHub = za ~1 min na webu (průběh v Cloudflare → Worker michaeldolejs → Deployments).
 
 ### Tipy
 - Obrázky na web zmenšit předem (max ~2400 px, JPG/WebP do ~500 kB). Videa ideálně do ~20 MB (limit Cloudflare je 25 MB na soubor).
