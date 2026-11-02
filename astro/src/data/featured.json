@@ -1,0 +1,122 @@
+[
+  {
+    "href": "https://www.najbrt.cz/en/work/footshop",
+    "src": "/assets/img/projects/footshop.jpg",
+    "alt": "Footshop identity",
+    "width": 1536,
+    "height": 1024,
+    "slug": "footshop"
+  },
+  {
+    "href": "https://www.najbrt.cz/en/work/mockuuups",
+    "src": "/assets/img/projects/mockuuups.jpeg",
+    "alt": "Mockuuups identity",
+    "width": 1536,
+    "height": 1024,
+    "slug": "mockuuups"
+  },
+  {
+    "href": "https://www.instagram.com/sko_holesovice/",
+    "src": "/assets/img/projects/sko.jpg",
+    "alt": "Skô identity",
+    "width": 1536,
+    "height": 1024,
+    "slug": "sko"
+  },
+  {
+    "href": "https://www.najbrt.cz/en/work/siteone",
+    "src": "/assets/img/projects/siteone.jpg",
+    "alt": "SiteOne identity",
+    "width": 1536,
+    "height": 1024,
+    "slug": "siteone"
+  },
+  {
+    "href": "https://www.instagram.com/p/CkHEgI7LCm5/",
+    "src": "/assets/img/projects/ableton.jpg",
+    "alt": "Ableton Note app",
+    "width": 1536,
+    "height": 1024,
+    "slug": "ableton"
+  },
+  {
+    "href": "https://www.behance.net/gallery/172365227/Biano-visual-identity-and-system",
+    "src": "/assets/img/projects/biano.jpg",
+    "alt": "Biano visual identity",
+    "width": 1536,
+    "height": 1024,
+    "slug": "biano"
+  },
+  {
+    "href": "https://www.behance.net/gallery/162366147/Fabini-new-logotype-and-visual-system",
+    "src": "/assets/img/projects/fabini-2022.jpg",
+    "alt": "Fabini logo redesign",
+    "width": 1536,
+    "height": 1024,
+    "slug": "fabini-2022"
+  },
+  {
+    "href": "https://www.behance.net/gallery/108702477/Fabini-visual-identity-refresh",
+    "src": "/assets/img/projects/fabini-2020.jpeg",
+    "alt": "Fabini identity refresh",
+    "width": 1536,
+    "height": 1024,
+    "slug": "fabini-2020"
+  },
+  {
+    "href": "https://www.najbrt.cz",
+    "src": "/assets/img/projects/najbrt.jpg",
+    "alt": "Studio Najbrt",
+    "width": 1536,
+    "height": 1024,
+    "slug": "najbrt"
+  },
+  {
+    "href": "https://www.najbrt.cz/en/work/kviff-tv",
+    "src": "/assets/img/projects/kviff-tv.jpg",
+    "alt": "KVIFF.TV digital",
+    "width": 1536,
+    "height": 1024,
+    "slug": "kviff-tv"
+  },
+  {
+    "href": "https://www.izaakreich.com/en",
+    "src": "/assets/img/projects/izaak-reich.jpg",
+    "alt": "IzaakReich.com",
+    "width": 1536,
+    "height": 1024,
+    "slug": "izaak-reich"
+  },
+  {
+    "href": "https://www.hodinarstvibechyne.cz/cs/",
+    "src": "/assets/img/projects/hodinarstvi-bechyne.jpg",
+    "alt": "HodinarstviBechyne.cz",
+    "width": 1536,
+    "height": 1024,
+    "slug": "hodinarstvi-bechyne"
+  },
+  {
+    "href": "https://www.behance.net/gallery/42649929/Youradio-Mobile-Apps",
+    "src": "/assets/img/projects/youradio.jpg",
+    "alt": "YouRadio app",
+    "width": 1536,
+    "height": 1024,
+    "slug": "youradio"
+  },
+  {
+    "href": "https://www.najbrt.cz/en/work/musicbarcz",
+    "src": "/assets/img/projects/musicbar.jpg",
+    "alt": "Musicbar.cz",
+    "width": 1536,
+    "height": 1024,
+    "slug": "musicbar"
+  },
+  {
+    "href": "https://www.najbrt.cz/prace/ambicz",
+    "src": "/assets/img/projects/ambi.jpg",
+    "alt": "Ambi.cz",
+    "width": 1536,
+    "height": 1024,
+    "slug": "ambi"
+  }
+]

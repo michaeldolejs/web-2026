@@ -1,0 +1,19 @@
+---
+import site from "../data/site.json";
+
+const current = Astro.url.pathname.replace(/\/$/, "");
+const isExternal = (href: string) => href.startsWith("http");
+---
+<nav class="nav" aria-label="Main">
+  <a class="nav__logo" href="/">michaeldolejs.com</a>
+  <button class="nav__toggle" type="button" aria-expanded="false">Menu</button>
+  <ul class="nav__links">
+    {site.nav.map(({ label, href }) => (
+      <li>
+        {isExternal(href)
+          ? <a href={href} target="_blank" rel="noopener">{label}</a>
+          : <a href={href} aria-current={current === href ? "page" : undefined}>{label}</a>}
+      </li>
+    ))}
+  </ul>
+</nav>

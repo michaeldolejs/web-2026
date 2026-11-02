@@ -1,0 +1,69 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"caseStudies">;
+  next?: CollectionEntry<"caseStudies">;
+}
+
+const { entry, next } = Astro.props;
+const { title, meta, tags, link, linkLabel, cover, credits, media } = entry.data;
+const { Content } = await render(entry);
+const hasText = Boolean(entry.body?.trim());
+// Without own media, fall back to the cover so the overlay never opens empty.
+const items = media.length ? media : cover ? [cover] : [];
+const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
+// Button label from the link's domain unless set in the file
+const host = link ? new URL(link).hostname.replace(/^www\./, "") : "";
+const buttonLabel = linkLabel
+  ?? (host.endsWith("najbrt.cz") ? "See project on najbrt.cz"
+    : host.endsWith("behance.net") ? "See project on Behance"
+    : host.endsWith("instagram.com") ? "See project on Instagram"
+    : `Visit ${host}`);
+---
+<dialog class="case" id={entry.id} autofocus aria-labelledby={`${entry.id}-title`}>
+  <div class="case__bar">
+    <p class="label">Case study</p>
+    <button class="case__close" type="button" data-case-close>Close</button>
+  </div>
+
+  <article class="case__body">
+    <header class="case__head">
+      <h2 class="case__title" id={`${entry.id}-title`}>{title}</h2>
+      {meta && <p class="case__meta">{meta}</p>}
+    </header>
+
+    <div class="case__info">
+      <div class="case__text">
+        {hasText ? <Content /> : tags && <p>{tags}</p>}
+      </div>
+      {(tags || credits.length > 0) && (
+        <dl class="case__credits">
+          {tags && hasText && (<div><dt>Type</dt><dd>{tags}</dd></div>)}
+          {credits.map(({ label, value, href }) => (
+            <div>
+              <dt>{label}</dt>
+              <dd>{href ? <a class="u-link" href={href} target="_blank" rel="noopener">{value}</a> : value}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+    </div>
+
+    {items.length > 0 && (
+      <ul class="case__media">
+        {items.map((src) => (
+          <li>
+            {isVideo(src)
+              ? <video src={src} muted loop playsinline preload="none" data-case-video></video>
+              : <img src={src} alt={title} loading="lazy" decoding="async">}
+          </li>
+        ))}
+      </ul>
+    )}
+
+    <footer class="case__foot">
+      {link && <a class="button" href={link} target="_blank" rel="noopener"><span data-roll>{buttonLabel} ↗</span></a>}
+    </footer>
+  </article>
+</dialog>

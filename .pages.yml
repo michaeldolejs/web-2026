@@ -1,0 +1,221 @@
+# Pages CMS config (https://pagescms.org) — edit the website content at app.pagescms.org.
+# Every save is a commit to GitHub; Cloudflare Pages then rebuilds the site (~1 min).
+
+media:
+  input: astro/public/assets
+  output: /assets
+  categories: [image, video]
+
+content:
+  # ---------- Projects page ----------
+  - name: projects
+    label: Projects (list)
+    type: file
+    path: astro/src/data/projects.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        type: string
+        required: true
+      - name: tags
+        type: string
+        description: "Comma separated, e.g. Logo, Visual identity, Webdesign. Also decides the filter category."
+      - name: meta
+        type: string
+        description: "e.g. Studio Najbrt (2026) or Freelance (2025)"
+      - name: href
+        label: Link
+        type: string
+      - name: thumb
+        label: Hover thumbnail
+        type: image
+        options:
+          path: astro/public/assets/img/thumbs
+      - name: caseStudy
+        label: Case study slug
+        type: string
+        description: "File name of the case study without .md (e.g. a8000-identity). Popups open from the featured slider."
+      - name: categories
+        label: Filter categories (optional override)
+        type: select
+        description: "Normally guessed from tags. Fill only to force a category."
+        options:
+          multiple: true
+          values: [identity, web, apps, other, school]
+
+  - name: case-studies
+    label: Case studies (popups)
+    type: collection
+    path: astro/src/content/case-studies
+    filename:
+      template: "{fields.title}.md"
+      field: create
+    view:
+      fields: [title, meta, tags]
+      primary: title
+      sort: [title]
+    fields:
+      - name: title
+        type: string
+        required: true
+      - name: meta
+        type: string
+        description: "e.g. Studio Najbrt (2026)"
+      - name: tags
+        type: string
+      - name: link
+        type: string
+        description: "Full URL incl. https://"
+      - name: linkLabel
+        label: Link label (optional)
+        type: string
+      - name: cover
+        label: Cover / hover thumbnail
+        type: image
+        options:
+          path: astro/public/assets/img/thumbs
+      - name: credits
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}: {value}"
+        fields:
+          - name: label
+            type: string
+            required: true
+          - name: value
+            type: string
+            required: true
+          - name: href
+            label: Link (optional)
+            type: string
+      - name: media
+        label: Images & videos
+        description: "First item is shown full width. Images go to img/case-studies/<slug>/, videos to video/case-studies/."
+        type: file
+        list: true
+        options:
+          path: astro/public/assets/img/case-studies
+      - name: body
+        label: Text
+        type: rich-text
+        options:
+          format: markdown
+          media: false
+
+  - name: featured
+    label: Projects (featured images)
+    type: file
+    path: astro/src/data/featured.json
+    format: json
+    list: true
+    fields:
+      - name: src
+        label: Image
+        type: image
+        required: true
+        options:
+          path: astro/public/assets/img/projects
+      - name: alt
+        type: string
+      - name: href
+        label: Link
+        type: string
+      - name: slug
+        label: Case study slug
+        type: string
+      - name: width
+        type: number
+        description: "Image width in px"
+      - name: height
+        type: number
+        description: "Image height in px"
+
+  # ---------- Archive ----------
+  - name: unselected
+    label: Unselected (archive)
+    type: file
+    path: astro/src/data/unselected.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        type: string
+        required: true
+      - name: tags
+        type: string
+      - name: meta
+        type: string
+      - name: href
+        label: Link
+        type: string
+
+  # ---------- About page ----------
+  - name: cv
+    label: About — CV
+    type: file
+    path: astro/src/data/cv.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Section
+        type: string
+      - name: items
+        type: object
+        list: true
+        fields:
+          - name: text
+            type: string
+          - name: href
+            label: Link (optional)
+            type: string
+
+  - name: gallery
+    label: About — gallery
+    type: file
+    path: astro/src/data/gallery.json
+    format: json
+    list: true
+    fields:
+      - name: src
+        label: Image
+        type: image
+        options:
+          path: astro/public/assets/img/about
+      - name: alt
+        type: string
+      - name: width
+        type: number
+      - name: height
+        type: number
+
+  # ---------- Site ----------
+  - name: site
+    label: Site — email, menu, socials
+    type: file
+    path: astro/src/data/site.json
+    format: json
+    fields:
+      - name: email
+        type: string
+      - name: nav
+        label: Menu
+        type: object
+        list: true
+        fields:
+          - name: label
+            type: string
+          - name: href
+            type: string
+      - name: social
+        label: Social links
+        type: object
+        list: true
+        fields:
+          - name: label
+            type: string
+          - name: href
+            type: string

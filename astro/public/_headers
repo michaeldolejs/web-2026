@@ -1,0 +1,3 @@
+# TEST ONLY: blocks indexing of the *.pages.dev preview. Delete before launching on michaeldolejs.com.
+/*
+  X-Robots-Tag: noindex, nofollow

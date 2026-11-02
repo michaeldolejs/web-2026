@@ -1,0 +1,51 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import Slider from "../components/Slider.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import Contact from "../components/Contact.astro";
+import Email from "../components/Email.astro";
+import gallery from "../data/gallery.json";
+import cv from "../data/cv.json";
+---
+<Base title="About" ogType="profile" description="Michael Dolejš (*1992) is a graphic designer and partner at Studio Najbrt. Resume, talks, interviews, publications and exhibitions.">
+  <PageHead label="About" />
+
+  <section class="intro intro--about">
+    <h1 class="intro__text">Michael Dolejš (*1992) is a graphic designer with a keen interest in exploring the dynamic overlaps between digital, print and communication be it websites, apps, logotypes or visual identity systems.</h1>
+    <p class="intro__text intro__more">He graduated from Faculty of Arts of University of West Bohemia in 2017 and started working with <a class="u-link" href="https://www.najbrt.cz/en" target="_blank" rel="noopener">Studio Najbrt</a> in the same year. He recently became a partner.</p>
+    <p class="intro__text intro__more">Apart from freelancing for many clients, he also worked in-house with many companies such as <a class="u-link" href="https://www.ableton.com/" target="_blank" rel="noopener">Ableton</a>, <a class="u-link" href="https://www.strv.com/" target="_blank" rel="noopener">STRV</a> or <a class="u-link" href="https://www.cleevio.com/" target="_blank" rel="noopener">Cleevio</a>.</p>
+  </section>
+
+  <section class="gallery" aria-label="Photos">
+    <Slider class="slider--gallery">
+      {gallery.map(({ src, alt, width, height }) => (
+        <li class="slide"><img src={src} alt={alt} width={width} height={height} style={`aspect-ratio: ${width} / ${height};`} loading="lazy" decoding="async"></li>
+      ))}
+    </Slider>
+  </section>
+
+  <section class="section cv">
+    {cv.map(({ title, items }) => (
+      <div class="cv__group">
+        <h2 class="label">{title}</h2>
+        <ul class="cv__list">
+          {items.map(({ text, href }) => (
+            <li>{href ? <a href={href} target="_blank" rel="noopener">{text}</a> : text}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  <Contact>
+    <p>Feel free to contact me for work inquiry or any other opportunities at <Email /></p>
+  </Contact>
+
+  <section class="section listen">
+    <h2 class="label">What I listen to</h2>
+    <iframe class="listen__player" src="https://open.spotify.com/embed/playlist/6IVEeaZ11fjrGsKEsnFS1V?theme=1" title="Spotify playlist" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  </section>
+
+  <SocialLinks />
+</Base>

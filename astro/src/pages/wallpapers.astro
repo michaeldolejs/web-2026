@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+---
+<Base title="Wallpapers" description="Some wallpapers I created over the years, available through Walli.">
+  <PageHead label="Wallpapers" />
+
+  <section class="intro">
+    <h1 class="intro__text">Some wallpapers I created over the years. Available through <a class="u-link" href="https://www.walliapp.com/" target="_blank" rel="noopener">Walli</a>, but visit the dedicated <a class="u-link" href="https://www.dropbox.com/sh/4tdk6n8o0h39yjq/AADKwiQYJzIaxbmuYBUbmq8_a?dl=0" target="_blank" rel="noopener">download page</a> to see more unreleased images.</h1>
+  </section>
+
+  <div class="art art--wide">
+    <img class="art__grid" src="/assets/img/hero-grid.svg" alt="">
+    <img class="art__phone" src="/assets/img/wallpapers/phone-1.png" alt="Wallpaper on a phone" width="543" height="1120" style="left: 16.6%; top: 40.5%; height: 61.1%;">
+    <img class="art__phone" src="/assets/img/wallpapers/phone-2.png" alt="Wallpaper on a phone" width="543" height="1120" style="left: 83.7%; top: 30.9%; height: 62%; --rot: 90deg;">
+    <img class="art__phone" src="/assets/img/wallpapers/phone-3.png" alt="Wallpaper on a phone" width="543" height="1120" style="left: 48.9%; top: 77.9%; height: 53.9%; --rot: -45deg;">
+  </div>
+</Base>

@@ -1,0 +1,20 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+---
+<Base title="Page not found" description="This page doesn't exist anymore.">
+  <PageHead label="Error" />
+
+  <section class="intro">
+    <h1 class="intro__text">This page doesn't exist anymore.</h1>
+    <p class="intro__text intro__more">Please go back to the <a class="u-link" href="/">homepage</a> or <a class="u-link" href="/projects">projects</a> and maybe you'll find what you are looking for.</p>
+    <p class="intro__text intro__more">Thanks, Michael</p>
+  </section>
+
+  <div class="art art--404" aria-hidden="true">
+    <img class="art__grid" src="/assets/img/hero-grid.svg" alt="">
+    <img class="art__item" data-drag src="/assets/img/404/sticker-photo.png" alt="" style="left: 66%; top: 0; width: 30%; aspect-ratio: 1; object-fit: contain;">
+    <img class="art__item" data-drag src="/assets/img/404/sticker-1.svg" alt="" style="left: 3.7%; top: 30.3%; width: 22%; aspect-ratio: 298 / 216; object-fit: contain;">
+    <img class="art__item" data-drag src="/assets/img/404/sticker-2.svg" alt="" style="left: 36.9%; top: 62.2%; width: 24%; aspect-ratio: 325 / 236; object-fit: contain;">
+  </div>
+</Base>

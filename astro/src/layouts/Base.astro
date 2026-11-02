@@ -1,0 +1,42 @@
+---
+import "../styles/main.css";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description: string;
+  ogType?: "website" | "profile";
+  noindex?: boolean;
+}
+
+const { title, description, ogType = "website", noindex = false } = Astro.props;
+const fullTitle = title ? `${title} — michaeldolejs.com` : "michaeldolejs.com";
+const url = new URL(Astro.url.pathname.replace(/\/$/, ""), Astro.site);
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{fullTitle}</title>
+  <meta name="description" content={description}>
+  {noindex && <meta name="robots" content="noindex, nofollow">}
+  <meta property="og:title" content={fullTitle}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content={ogType}>
+  <meta property="og:url" content={url.href}>
+  <meta name="theme-color" content="#121212">
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="preload" href="/assets/fonts/Saans-Regular.otf" as="font" type="font/otf" crossorigin>
+  <script src="../scripts/main.js"></script>
+</head>
+<body>
+  <main>
+    <slot />
+  </main>
+  <Footer />
+  <Nav />
+  <div class="cursor" aria-hidden="true" data-cursor></div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+---
+import Base from "../layouts/Base.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import Contact from "../components/Contact.astro";
+import Email from "../components/Email.astro";
+---
+<Base description="Graphic Designer from Prague interested in user interface & experience design, but also in visual identities, communication & strategy.">
+  <section class="hero">
+    <div class="hero__text">
+      <h1>Hello!</h1>
+      <p>My name is Michael Dolejš, and I am a graphic designer and partner at Studio Najbrt (and sometimes work on projects with my wife <a class="u-link" href="https://www.karlagondekova.com/" target="_blank" rel="noopener">Karla</a>).</p>
+      <p>I'm interested in visual communication and its overlaps between digital design, motion design, and print.</p>
+    </div>
+
+    <div class="hero__art" aria-hidden="true">
+      <picture>
+        <source media="(max-width: 809px)" srcset="/assets/img/hero-grid-mobile.svg">
+        <img class="hero__grid" src="/assets/img/hero-grid.svg" alt="">
+      </picture>
+      <img class="hero__photo" data-drag src="/assets/img/hero-photo.png" alt="" width="656" height="656">
+      <img class="hero__sticker--1" data-drag src="/assets/img/hero-sticker-1.svg" alt="">
+      <img class="hero__sticker--2" data-drag src="/assets/img/hero-sticker-2.svg" alt="">
+    </div>
+  </section>
+
+  <section class="section showreel">
+    <h2 class="label">Showreel of what I do</h2>
+    <video class="showreel__video" src="/assets/video/showreel.mp4" muted loop playsinline preload="metadata" data-autoplay></video>
+    <a class="button" href="/projects"><span data-roll>See all projects</span></a>
+  </section>
+
+  <SocialLinks />
+
+  <Contact>
+    <p>Feel free to contact me for work inquiry or any other opportunities on my <Email />.</p>
+    <p>See my full resume <a class="u-link" href="/about">here</a>.</p>
+  </Contact>
+</Base>

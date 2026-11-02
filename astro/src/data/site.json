@@ -1,0 +1,18 @@
+{
+  "email": "michael.dolejs@me.com",
+  "nav": [
+    { "label": "Projects", "href": "/projects" },
+    { "label": "About", "href": "/about" },
+    { "label": "Linkedin", "href": "https://www.linkedin.com/in/michaeldolejs/" },
+    { "label": "Instagram", "href": "https://www.instagram.com/michaeldolejscom/" },
+    { "label": "Store/Shop", "href": "https://randommmness.bigcartel.com/" }
+  ],
+  "social": [
+    { "label": "Instagram", "href": "https://www.instagram.com/michaeldolejscom" },
+    { "label": "Behance", "href": "https://www.behance.com/michaeldolejs" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/michaeldolejs/" },
+    { "label": "Awwwards", "href": "https://www.awwwards.com/michaeldolejs/" },
+    { "label": "SoundCloud", "href": "https://soundcloud.com/michaeldolejs" },
+    { "label": "Medium", "href": "https://medium.com/@michaeldolejs" }
+  ]
+}

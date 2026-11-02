@@ -1,0 +1,11 @@
+---
+import site from "../data/site.json";
+---
+<section class="section links">
+  <h2 class="label">Other places you can find me at</h2>
+  <ul class="link-list">
+    {site.social.map(({ label, href }) => (
+      <li><a href={href} target="_blank" rel="noopener"><span data-roll>{label}</span></a></li>
+    ))}
+  </ul>
+</section>

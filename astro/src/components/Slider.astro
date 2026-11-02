@@ -1,0 +1,10 @@
+---
+interface Props { class?: string }
+---
+<div class:list={["slider", Astro.props.class]} data-slider>
+  <ul class="slider__track">
+    <slot />
+  </ul>
+  <button class="slider__arrow slider__arrow--prev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
+  <button class="slider__arrow slider__arrow--next" type="button" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button>
+</div>

@@ -1,0 +1,72 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import Slider from "../components/Slider.astro";
+import ProjectRow from "../components/ProjectRow.astro";
+import Contact from "../components/Contact.astro";
+import Email from "../components/Email.astro";
+import CaseStudy from "../components/CaseStudy.astro";
+import { getCollection } from "astro:content";
+import featured from "../data/featured.json";
+import projects from "../data/projects.json";
+import { CATEGORIES, categoriesFor } from "../lib/categories";
+
+// Only featured projects get a popup, opened from the slider; rows in the list always link out.
+// Popups follow the order of the featured slider ("Next project").
+const all = await getCollection("caseStudies");
+const order = featured.map((f) => f.slug);
+const cases = all
+  .filter((entry) => order.includes(entry.id))
+  .sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
+const hasCase = (slug?: string) => cases.some((entry) => entry.id === slug);
+
+const counts = Object.fromEntries(
+  CATEGORIES.map(({ id }) => [id, projects.filter((p) => categoriesFor(p).includes(id)).length]),
+);
+---
+<Base title="Projects" description="List of some of my favourite projects I've done over the years as a freelancer or with various companies.">
+  <PageHead label="Projects" />
+
+  <section class="intro">
+    <h1 class="intro__text">
+      List of some of some of my favourite projects I've done over the years as a freelancer or with various companies.
+      <span class="intro__break">Some of them don't exist anymore or are simply very old, but enjoy it anyways!</span>
+    </h1>
+  </section>
+
+  <section class="section featured" aria-label="Featured projects">
+    <h2 class="label">Featured projects</h2>
+    <Slider>
+      {featured.map(({ slug, href, src, alt, width, height }) => (
+        <li class="slide">
+          <a {...(hasCase(slug) ? { href: `#${slug}`, "data-case-open": slug } : { href, target: "_blank", rel: "noopener" })}>
+            <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async">
+            <span class="slide__cta">{alt} <span class="slide__more">— View project</span></span>
+          </a>
+        </li>
+      ))}
+    </Slider>
+  </section>
+
+  <section class="section finished">
+    <h2 class="label">Finished projects</h2>
+    <div class="filter" role="group" aria-label="Filter projects" data-filter>
+      <button class="filter__btn" type="button" data-filter-value="all" aria-pressed="true">All <sup>{projects.length}</sup></button>
+      {CATEGORIES.map(({ id, label }) => (
+        <button class="filter__btn" type="button" data-filter-value={id} aria-pressed="false">{label} <sup>{counts[id]}</sup></button>
+      ))}
+    </div>
+    <ul class="project-list" data-filter-list>
+      {projects.map((project) => <ProjectRow {...project} />)}
+    </ul>
+    <img class="project-preview" alt="" aria-hidden="true" data-project-preview>
+  </section>
+
+  {cases.map((entry, i) => <CaseStudy entry={entry} next={cases[(i + 1) % cases.length]} />)}
+
+  <Contact>
+    <p>Other archived work on <a class="u-link" href="https://dribbble.com/michaeldolejs" target="_blank" rel="noopener">Dribbble</a> or <a class="u-link" href="https://www.behance.net/michaeldolejs" target="_blank" rel="noopener">Behance</a>.</p>
+    <p>Feel free to contact me for work inquiry or any other opportunities at <Email /></p>
+    <p>See my full resume <a class="u-link" href="/about">here</a>.</p>
+  </Contact>
+</Base>

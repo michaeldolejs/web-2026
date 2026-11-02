@@ -1,0 +1,33 @@
+    <div class="list-toolbar">
+      <div class="filter" role="group" aria-label="Filter projects" data-filter>
+        <button class="filter__btn" type="button" data-filter-value="all" aria-pressed="true">All <sup>{projects.length}</sup></button>
+        {CATEGORIES.map(({ id, label }) => (
+          <button class="filter__btn" type="button" data-filter-value={id} aria-pressed="false">{label} <sup>{counts[id]}</sup></button>
+        ))}
+      </div>
+      <div class="view-switch" role="group" aria-label="View" data-view-switch>
+        <button class="view-switch__btn" type="button" data-view-value="list" aria-pressed="true">List</button>
+        <button class="view-switch__btn" type="button" data-view-value="orbit" aria-pressed="false">Orbit</button>
+      </div>
+    </div>
+    <ul class="project-list" data-filter-list data-view="list">
+      {projects.map((project) => <ProjectRow {...project} caseStudy={hasCase(project.caseStudy) ? project.caseStudy : undefined} />)}
+    </ul>
+    <div class="orbit" data-view="orbit" hidden>
+      <ul class="orbit__stage" data-filter-list data-orbit>
+        {projects.map((project) => {
+          const cs = hasCase(project.caseStudy) ? project.caseStudy : undefined;
+          const linkProps = cs
+            ? { href: `#${cs}`, "data-case-open": cs }
+            : project.href ? { href: project.href, target: "_blank", rel: "noopener" } : {};
+          return (
+            <li class="orbit__item" data-cats={categoriesFor(project).join(" ")} data-title={project.title} data-meta={`${project.tags} — ${project.meta}`}>
+              <a class="orbit__tile" {...linkProps} draggable="false">
+                <img data-src={project.thumb} alt={project.title} decoding="async" draggable="false">
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      <p class="orbit__caption" aria-live="polite" data-orbit-caption><span class="orbit__hint">Drag to spin · click to open</span></p>
+    </div>

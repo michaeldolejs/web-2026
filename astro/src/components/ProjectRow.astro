@@ -1,0 +1,25 @@
+---
+import { categoriesFor } from "../lib/categories";
+
+interface Props {
+  title: string;
+  tags: string;
+  meta: string;
+  href?: string;
+  thumb?: string;
+  categories?: string[];
+}
+
+const { title, tags, meta, href, thumb } = Astro.props;
+const cats = categoriesFor(Astro.props).join(" ");
+// Rows always link out; case study overlays open only from the featured slider.
+const Tag = href ? "a" : "div";
+const linkProps = href ? { href, target: "_blank", rel: "noopener" } : {};
+---
+<li data-cats={cats}><Tag class="project" data-thumb={thumb} {...linkProps}>
+  <span class="project__title"><span data-roll>{title}</span></span>
+  <span class="project__side">
+    <span class="project__meta">{meta}</span>
+    <span class="project__tags">{tags}</span>
+  </span>
+</Tag></li>
